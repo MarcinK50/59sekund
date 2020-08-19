@@ -27,9 +27,9 @@ var liczba2 = 0;
 // rome-ignore lint/js/noVar
 var wynik = 0;
 
-var pOdp = 0;
+var p_odp = 0;
 
-var bOdp = 0;
+var b_odp = 0;
 
 window.onload = odliczanie;
 
