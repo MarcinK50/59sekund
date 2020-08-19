@@ -48,8 +48,8 @@ function sprawdz() {
 		p_odp = p_odp + 1;
 		document.getElementById("czy_poprawna").innerHTML = "<p>Poprawna odpowied\u017a!</p>";
 		start();
-	} else if(typeof liczba) {
-		document.getElementById("czy_poprawna").innerHTML = `<p>Podaj prawidłową liczbę!</p>`;
+	} else if(typeof liczba == "number") {
+			document.getElementById("czy_poprawna").innerHTML = `<p>Podaj prawidłową liczbę!</p>`;
 	} else {
 		b_odp = b_odp + 1;
 		document.getElementById("czy_poprawna").innerHTML = `<p>To nie jest poprawna odpowiedź! Poprawna odpowiedź to: ${wynik}.</p>`;
