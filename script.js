@@ -18,66 +18,65 @@ GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
-
+*/ // rome-ignore lint/js/noVar
 var liczba = 59;
+// rome-ignore lint/js/noVar
 var liczba1 = 0;
+// rome-ignore lint/js/noVar
 var liczba2 = 0;
+// rome-ignore lint/js/noVar
 var wynik = 0;
-var p_odp = 0;
-var b_odp = 0;
+
+var pOdp = 0;
+
+var bOdp = 0;
 
 window.onload = odliczanie;
 
-function start()
-{
-	liczba1 = Math.floor(Math.random()*10);
-	liczba2 = Math.floor(Math.random()*10);
+function start() {
+	liczba1 = Math.floor(Math.random() * 10);
+	liczba2 = Math.floor(Math.random() * 10);
 	wynik = liczba1 * liczba2;
-	
-	document.getElementById("gra").innerHTML = '<h4>'+liczba1+' * '+liczba2+'</h4> <input type="text" id="pole" /> <button type="button" id="sprawdz" onclick="sprawdz()" >Sprawdź</button> <button type="button" id="k_gry" onclick="koniec()" >Koniec gry</button>';
+
+	document.getElementById("gra").innerHTML = `<h4>${liczba1} * ${liczba2}</h4> <input type="text" id="pole" /> <button type="button" id="sprawdz" onclick="sprawdz()" >Sprawdź</button> <button type="button" id="k_gry" onclick="koniec()" >Koniec gry</button>`;
 }
 
-function sprawdz()
-{
-	if(document.getElementById("pole").value == wynik)
-	{
+// rome-ignore lint/js/noUnusedVariables
+function sprawdz() {
+	if (document.getElementById("pole").value === wynik) {
 		liczba = liczba + 2;
 		p_odp = p_odp + 1;
-		document.getElementById("czy_poprawna").innerHTML = '<p>Poprawna odpowiedź!</p>';
+		document.getElementById("czy_poprawna").innerHTML = "<p>Poprawna odpowied\u017a!</p>";
+		start();
+	} else if (liczba !== " ") {
+		b_odp = b_odp + 1;
+		document.getElementById("czy_poprawna").innerHTML = `<p>To nie jest poprawna odpowiedź! Poprawna odpowiedź to: ${wynik}.</p>`;
 		start();
 	}
-	else if(liczba != " ")
-	{
-	b_odp = b_odp + 1;
-	document.getElementById("czy_poprawna").innerHTML = '<p>To nie jest poprawna odpowiedź! Poprawna odpowiedź to: '+wynik+'.</p>';
-	start();
+}
+
+// rome-ignore lint/js/useCamelCase
+function zacznij_odliczac() {
+	document.getElementById("odliczanie").innerHTML = liczba;
+	liczba = liczba - 1;
+
+	// rome-ignore lint/js/noVar
+	var odliczanie = setTimeout("zacznij_odliczac()", 1_000);
+
+	if (liczba === 0) {
+		clearTimeout(odliczanie);
+
+		//koniec gry na koniec czasu
+		document.getElementById("gra").innerHTML = `<h5>Koniec czasu. Poprawnych odpowiedzi:  ${p_odp}. Błędnych odpowiedzi: ${b_odp}.</h5><button id="jeszcze_raz" type="button" onclick="start()" >Jeszcze raz?</button>`;
 	}
 }
 
-function zacznij_odliczac()
-    {
-        document.getElementById("odliczanie").innerHTML = liczba;
-		liczba = liczba-1;
-			
-        var odliczanie = setTimeout("zacznij_odliczac()",1000);
-		
-		if(liczba==0) 
-		{
-				clearTimeout(odliczanie);
-
-				//koniec gry na koniec czasu
-				document.getElementById("gra").innerHTML = '<h5>Koniec czasu. Poprawnych odpowiedzi:  '+p_odp+'. Błędnych odpowiedzi: '+b_odp+'.'+'</h5>'+'<button id="jeszcze_raz" type="button" onclick="start()" >Jeszcze raz?</button>';
-		}
-    }
-	
-function koniec()
-{
-	document.getElementById("gra").innerHTML = '<h5>Zakończyłeś grę. Poprawnych odpowiedzi:  '+p_odp+'. Błędnych odpowiedzi: '+b_odp+'.'+'</h5>'+'<button id="jeszcze_raz" type="button" onclick="start()" >Jeszcze raz?</button>';
+// rome-ignore lint/js/noUnusedVariables
+function koniec() {
+	document.getElementById("gra").innerHTML = `<h5>Zakończyłeś grę. Poprawnych odpowiedzi:  ${p_odp}. Błędnych odpowiedzi: ${b_odp}.</h5><button id="jeszcze_raz" type="button" onclick="start()" >Jeszcze raz?</button>`;
 }
 
-function odliczanie()
-{
+function odliczanie() {
 	//rozpoczęcie odlicznia
 	zacznij_odliczac();
 }

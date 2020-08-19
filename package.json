@@ -1,0 +1,22 @@
+{
+  "name": "59sekund",
+  "version": "1.0.0",
+  "description": "Gra do nauki tabliczki mnożenia",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://MarcinK50:5123marcin@github.com/MarcinK50/59sekund.git"
+  },
+  "author": "Marcin \"MarcinK50\" Kowalicki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarcinK50/59sekund/issues"
+  },
+  "homepage": "https://github.com/MarcinK50/59sekund#readme",
+  "dependencies": {
+    "rome": "^10.0.4-beta"
+  }
+}
