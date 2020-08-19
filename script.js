@@ -21,21 +21,21 @@ GNU General Public License for more details.
 */ // rome-ignore lint/js/noVar
 var liczba = 59;
 // rome-ignore lint/js/noVar
-var liczba1 = 0;
-// rome-ignore lint/js/noVar
-var liczba2 = 0;
-// rome-ignore lint/js/noVar
+
+const startBtn = document.getElementById('zaczynajmy').addEventListener('click', () => {
+	odliczanie();
+	start();
+});
+
 var wynik = 0;
 
 var p_odp = 0;
 
 var b_odp = 0;
 
-window.onload = odliczanie;
-
 function start() {
-	liczba1 = Math.floor(Math.random() * 10);
-	liczba2 = Math.floor(Math.random() * 10);
+	let liczba1 = Math.floor(Math.random() * 10);
+	let liczba2 = Math.floor(Math.random() * 10);
 	wynik = liczba1 * liczba2;
 
 	document.getElementById("gra").innerHTML = `<h4>${liczba1} * ${liczba2}</h4> <input type="text" id="pole" /> <button type="button" id="sprawdz" onclick="sprawdz()" >Sprawdź</button> <button type="button" id="k_gry" onclick="koniec()" >Koniec gry</button>`;
@@ -43,12 +43,14 @@ function start() {
 
 // rome-ignore lint/js/noUnusedVariables
 function sprawdz() {
-	if (document.getElementById("pole").value === wynik) {
+	if (document.getElementById("pole").value == wynik) {
 		liczba = liczba + 2;
 		p_odp = p_odp + 1;
 		document.getElementById("czy_poprawna").innerHTML = "<p>Poprawna odpowied\u017a!</p>";
 		start();
-	} else if (liczba !== " ") {
+	} else if(typeof liczba) {
+		document.getElementById("czy_poprawna").innerHTML = `<p>Podaj prawidłową liczbę!</p>`;
+	} else {
 		b_odp = b_odp + 1;
 		document.getElementById("czy_poprawna").innerHTML = `<p>To nie jest poprawna odpowiedź! Poprawna odpowiedź to: ${wynik}.</p>`;
 		start();
